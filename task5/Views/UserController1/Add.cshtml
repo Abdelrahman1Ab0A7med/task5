@@ -1,0 +1,40 @@
+﻿@model User
+@{
+	var courses = ViewBag.courses;
+}<div><a asp-action="Index" class="btn btn-warning">Back</a></div>
+<form action="Add" method="post">
+	<div>
+		<label asp-for="Name"></label>
+		<input class="form-control" asp-for="Name"/>
+		<span asp-validation-for="Name" class="text text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Age"></label>
+		<input class="form-control" asp-for="Age" />
+		<span asp-validation-for="Age" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="phone"></label>
+		<input class="form-control" asp-for="phone" />
+		<span asp-validation-for="phone" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Password"></label>
+		<input class="form-control" type="password" asp-for="Password" />
+		<span asp-validation-for="Password" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="Email"></label>
+		<input class="form-control" asp-for="Email" />
+		<span asp-validation-for="Email" class="text-danger"></span>
+	</div>
+	<div>
+		<label asp-for="CourseId"></label>
+		<select class="form-select" asp-for="CourseId" asp-items="courses"></select>
+	</div>
+
+	<div><button class="btn btn-success m-2">Submit</button></div>
+</form>
+@section scripts{
+	<partial name="_ValidationScriptsPartial">
+	}

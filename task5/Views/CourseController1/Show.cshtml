@@ -1,0 +1,13 @@
+﻿@model Course
+@{
+	var course = Model;
+}
+<div><a asp-action="Index" class="btn btn-warning">Back</a></div>
+<div class="card card-body">
+	<label asp-for="Name" ></label>
+	<p>@course.Name</p>
+	<label asp-for="Hour"></label>
+	<p>@course.Hour</p>
+	<label asp-for="Description"></label>
+	<p>@course.Description</p>
+</div>

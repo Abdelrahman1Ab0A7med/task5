@@ -1,0 +1,27 @@
+﻿@model Course
+<div><a asp-action="Index" class="btn btn-warning">Back</a></div>
+<form action="Add" method="post">
+	<div>
+		<label asp-for="Name"></label>
+		<input class="form-control" asp-for="Name" />
+		<span asp-validation-for="Name"></span>
+
+	</div>
+	<div>
+		<label asp-for="Hour"></label>
+		<input class="form-control" asp-for="Hour" />
+		<span asp-validation-for="Hour"></span>
+
+	</div>
+	<div>
+		<label asp-for="Description"></label>
+		<input class="form-control" asp-for="Description" />
+		<span asp-validation-for="Description"></span>
+
+	</div>
+
+	<div><button class="btn btn-success m-2">Submit</button></div>
+</form>
+@section scripts{
+	<partial name="_ValidationScriptsPartial">
+}

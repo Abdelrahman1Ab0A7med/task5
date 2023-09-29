@@ -1,0 +1,52 @@
+﻿@model List<Course>
+@{
+	var search = ViewBag.search;
+	var courses = Model;
+}
+<div class="d-flex justify-content-between align-items-center m-2">
+	<a  class="btn btn-success" asp-action="Add">Add new courses</a>
+	<form asp-action="Index" method="post">
+		<div class="input-group">
+			<div class="form-outline">
+				<input name="search" type="text" id="form1" value="@search" placeholder="Search..." class="form-control" />
+			</div>
+			<button type="submit" class="btn btn-primary">
+				<i class="fas fa-search"></i>
+			</button>
+		</div>
+	</form>
+</div>
+
+<table class="table table-hover m-2">
+	<tr>
+		<th class="text">Id</th>
+		<th>Name</th>
+		<th>Hour</th>
+		<th>Description</th>
+		<th>
+		@{
+			if(search != null)
+			{
+				<div class="d-flex justify-content-end">
+					<a asp-action="Index" class="btn btn-light m-2"><i class="fa-solid fa-share fa-flip-horizontal" style="color: #0f0f0f;"></i></a>
+				</div>
+			}
+		}
+		</th>
+	</tr>
+	
+	@for (int i = 0;i< courses.Count;i++)
+	{
+		<tr>
+			<td>@(i+1)</td>
+			<td>@courses[i].Name</td>
+			<td>@courses[i].Hour</td>
+			<td>@courses[i].Description</td>
+			<td class="d-flex justify-content-end">
+				<a asp-action="Show"	asp-route-id="@courses[i].Id" class="btn btn-primary m-2">Details</a>
+				<a asp-action="Edit"	asp-route-id="@courses[i].Id" class="btn btn-warning m-2">Edit</a>
+				<a asp-action="Delete"  asp-route-id="@courses[i].Id" class="btn btn-danger m-2">Delete</a>
+			</td>
+		</tr>
+	}
+</table>

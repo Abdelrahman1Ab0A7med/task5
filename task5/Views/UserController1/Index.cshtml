@@ -1,0 +1,54 @@
+﻿@model List<User>
+@{
+	var search = ViewBag.search;
+	var users = Model;
+}
+
+<div class="d-flex justify-content-between align-items-center m-2">
+	<a class="btn btn-success" asp-action="Add">Add new user</a>
+	<form asp-action="Index" method="post">
+		<div class="input-group">
+			<div class="form-outline">
+				<input name="search" type="text" id="form1" value="@search" placeholder="Search..." class="form-control" />
+			</div>
+			<button type="submit" class="btn btn-primary">
+				<i class="fas fa-search"></i>
+			</button>
+		</div>
+	</form>
+</div>
+
+<table class="table table-hover">
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>Age</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>
+			@{
+				if (search != null)
+				{
+					<div class="d-flex justify-content-end">
+						<a asp-action="Index" class="btn btn-light m-2"><i class="fa-solid fa-share fa-flip-horizontal" style="color: #0f0f0f;"></i></a>
+					</div>
+				}
+			}
+		</th>
+	</tr>
+	@for(int i = 0; i < users.Count;i++)
+	{
+		<tr>
+			<td>@(i+1)</td>
+			<td>@users[i].Name</td>
+			<td>@users[i].Age</td>
+			<td>@users[i].phone</td>
+			<td>@users[i].Email</td>
+			<td>
+				<a asp-action="Show"	asp-route-id="@users[i].Id" class="btn btn-primary">Details</a>
+				<a asp-action="Edit"	asp-route-id="@users[i].Id" class="btn btn-warning">Edit</a>
+				<a asp-action="Delete"	asp-route-id="@users[i].Id" class="btn btn-danger">Delete</a>
+			</td>
+		</tr>
+	}
+</table>

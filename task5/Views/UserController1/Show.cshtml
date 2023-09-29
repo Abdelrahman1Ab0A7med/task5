@@ -1,0 +1,19 @@
+﻿@model User
+@{
+	var user = Model;
+}
+<div><a asp-action="Index" class="btn btn-warning">Back</a></div>
+<div class="card card-body">
+	<label asp-for="Id"></label>
+	<p>@user.Id</p>
+	<label asp-for="Name"></label>
+	<p>@user.Name</p>
+	<label asp-for="Age"></label>
+	<p>@user.Age</p>
+	<label asp-for="phone"></label>
+	<p>@user.phone</p>
+	<label asp-for="Email"></label>
+	<p>@user.Email</p>
+	<label asp-for="CourseId"></label>
+	<p>@(user?.course?.Name ?? "Not Assigned")</p>
+</div>
